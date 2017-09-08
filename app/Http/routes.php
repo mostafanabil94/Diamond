@@ -27,12 +27,14 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/dashboard', [
         'uses' => 'UserController@getDashboard',
-        'as' => 'dashboard'
+        'as' => 'dashboard',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/homepage', [
         'uses' => 'UserController@getHomepage',
-        'as' => 'homepage'
+        'as' => 'homepage',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/signup', function () {
@@ -41,7 +43,14 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::post('/adduser', [
         'uses' => 'UserController@postAddNewUser',
-        'as' => 'user.add'
+        'as' => 'user.add',
+        'middleware' => 'auth'
+    ]);
+
+    Route::get('/home', [
+        'uses' => 'UserController@getHome',
+        'as' => 'home',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/logout', [
@@ -55,69 +64,75 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/inbox', [
         'uses' => 'MessageController@getInbox',
-        'as' => 'inbox'
+        'as' => 'inbox',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/outbox', [
         'uses' => 'MessageController@getOutbox',
-        'as' => 'outbox'
+        'as' => 'outbox',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/newmessage',[
         'uses' => 'MessageController@getNewMessage',
-        'as' => 'message.new'
+        'as' => 'message.new',
+        'middleware' => 'auth'
     ]);
 
     Route::post('/sendmessage',[
         'uses' => 'MessageController@postSendMessage',
-        'as' => 'message.send'
+        'as' => 'message.send',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/viewmessage/{message_id}', [
         'uses' => 'MessageController@getViewMessage',
-        'as' => 'message.view'
+        'as' => 'message.view',
+        'middleware' => 'auth'
     ]);
-
-    Route::get('/home', [
-        'uses' => 'UserController@getHome',
-        'as' => 'home'
-    ]);
-
 
 
 
     Route::get('/service', [
         'uses' => 'ServiceController@getAddService',
-        'as' => 'service'
+        'as' => 'service',
+        'middleware' => 'auth'
     ]);
 
     Route::post('/addservice', [
         'uses' => 'ServiceController@postAddService',
-        'as' => 'service.add'
+        'as' => 'service.add',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/services', [
         'uses' => 'ServiceController@getServices',
-        'as' => 'services'
+        'as' => 'services',
+        'middleware' => 'auth'
     ]);
 
     Route::post('/editservices', [
         'uses' => 'ServiceController@postEditServices',
-        'as' => 'services.edit'
+        'as' => 'services.edit',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/deleteservice/{id}', [
        'uses' => 'ServiceController@getDeleteService',
-        'as' => 'service.delete'
+        'as' => 'service.delete',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/editservice/{id}', [
         'uses' => 'ServiceController@getEditService',
-        'as' => 'service.edit'
+        'as' => 'service.edit',
+        'middleware' => 'auth'
     ]);
 
     Route::post('/editservice', [
         'uses' => 'ServiceController@postEditService',
-        'as' => 'service.post.edit'
+        'as' => 'service.post.edit',
+        'middleware' => 'auth'
     ]);
 });

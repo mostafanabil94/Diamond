@@ -15,8 +15,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('inbox') }}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Messages</a></li>
-                    <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+                    @if(Auth::user() != null)
+                        <li><a href="{{ route('inbox') }}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Messages</a></li>
+                        <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+                    @endif
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
